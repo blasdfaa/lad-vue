@@ -1,7 +1,10 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
+<script setup lang="ts">
+  import { NPageHeader } from 'naive-ui';
+  import { useRouter } from 'vue-router';
 
-<style></style>
+  const router = useRouter();
+</script>
+
+<template>
+  <NPageHeader title="About" @back="router.back" />
+</template>
