@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { RouterView } from 'vue-router';
   import { NConfigProvider, NGlobalStyle, darkTheme } from 'naive-ui';
   import AppLayout from './layouts/AppLayout.vue';
   import { useThemeStore } from './stores/theme';
+  import RouterViewWithTransition from './components/RouterViewWithTransition.vue';
 
   const theme = useThemeStore();
 </script>
@@ -12,13 +12,7 @@
     <NGlobalStyle />
 
     <AppLayout>
-      <RouterView v-slot="{ Component }">
-        <template v-if="Component">
-          <Transition name="router" mode="out-in">
-            <component :is="Component" class="text-base" />
-          </Transition>
-        </template>
-      </RouterView>
+      <RouterViewWithTransition />
     </AppLayout>
   </NConfigProvider>
 </template>
@@ -26,5 +20,14 @@
 <style>
   * {
     box-sizing: border-box;
+  }
+
+  .router-enter-active,
+  .router-leave-active {
+    transition: opacity 0.1s ease;
+  }
+  .router-enter-from,
+  .router-leave-to {
+    opacity: 0;
   }
 </style>

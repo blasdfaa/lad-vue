@@ -5,12 +5,21 @@
   import { ref } from 'vue';
   import { ChevronBackCircleOutline } from '@vicons/ionicons5';
   import { useRoute } from 'vue-router';
+  import { watchEffect } from 'vue';
 
   const sidebarStore = useSidebarStore();
   const theme = useThemeVars();
   const route = useRoute();
 
   const selectedKey = ref(route.name as string);
+
+  function handleChangeRouter() {
+    selectedKey.value = route.name as string;
+  }
+
+  watchEffect(() => {
+    handleChangeRouter();
+  });
 </script>
 
 <template>
@@ -35,6 +44,7 @@
           :collapsed-width="64"
           :root-indent="18"
           :indent="26"
+          @update-value="console.log"
         />
       </NScrollbar>
     </div>
