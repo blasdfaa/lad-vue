@@ -1,8 +1,10 @@
 <script setup lang="ts">
-  import { NButton, NIcon, NTooltip } from 'naive-ui';
+  import { NButton, NIcon, NLayoutHeader, NSpace, NTooltip } from 'naive-ui';
   import { useSidebarStore } from '~/stores/sidebar';
-  import { MenuOutline } from '@vicons/ionicons5';
+  import { MenuOutline, PersonOutline } from '@vicons/ionicons5';
   import { defineAsyncComponent } from 'vue';
+  import { RouterLink } from 'vue-router';
+  import { RouteNamesEnum } from '~/enums/routeNamesEnum';
 
   const ThemeSwitcher = defineAsyncComponent(() => import('./ThemeSwitcher.vue'));
 
@@ -10,7 +12,7 @@
 </script>
 
 <template>
-  <header class="header">
+  <NLayoutHeader class="header" bordered>
     <div class="header__container">
       <NTooltip placement="bottom" trigger="hover">
         <template #trigger>
@@ -22,27 +24,38 @@
         {{ sidebarStore.isDisplay ? 'Скрыть меню' : 'Показать меню' }}
       </NTooltip>
 
-      <div>
+      <NSpace>
         <ThemeSwitcher />
-      </div>
+        <RouterLink v-slot="{ navigate }" :to="{ name: RouteNamesEnum.SIGN_IN }" custom>
+          <NButton quaternary @click="navigate">
+            <template #icon>
+              <NIcon :component="PersonOutline" />
+            </template>
+            Auth
+          </NButton>
+        </RouterLink>
+      </NSpace>
     </div>
-  </header>
+  </NLayoutHeader>
 </template>
 
 <style lang="css" scoped>
   .header {
+    --header-height: 56px;
+    --side-padding: 16px;
+
     position: sticky;
     top: 0;
     z-index: 50;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 8px;
+    display: grid;
+    grid-template-rows: calc(var(--header-height) - 1px);
+    padding: 0 var(--side-padding);
   }
 
   @media (min-width: 640px) {
     .header {
-      padding: 16px;
+      --side-padding: 32px;
     }
   }
 
@@ -50,6 +63,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr auto;
+    align-items: center;
     gap: 24px;
     height: 100%;
   }

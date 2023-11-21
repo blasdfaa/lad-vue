@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <NButton quaternary type="tertiary" @click="handleChangeTheme">
+  <NButton quaternary @click="handleChangeTheme">
     {{ theme.isDarkTheme ? 'Light' : 'Dark' }}
   </NButton>
 </template>

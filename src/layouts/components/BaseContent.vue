@@ -15,15 +15,17 @@
 
 <style lang="css" scoped>
   .content {
+    --padding: 16px;
+
     position: relative;
     min-height: calc(100% - 144px);
     width: 100%;
-    padding: 8px;
+    padding: var(--padding);
   }
 
   @media (min-width: 640px) {
     .content {
-      padding: 16px;
+      --padding: 16px 32px;
     }
   }
 

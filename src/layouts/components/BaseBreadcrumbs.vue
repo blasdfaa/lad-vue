@@ -17,12 +17,14 @@
 
 <style lang="css" scoped>
   .breadcrumbs {
-    padding: 0 8px;
+    --side-padding: 16px;
+
+    padding: 8px var(--side-padding) 0;
   }
 
   @media (min-width: 640px) {
     .breadcrumbs {
-      padding: 0 16px;
+      --side-padding: 32px;
     }
   }
 </style>

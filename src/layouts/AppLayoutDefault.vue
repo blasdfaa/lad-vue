@@ -4,6 +4,7 @@
   import BaseContent from './components/BaseContent.vue';
   import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
   import GlobalLoading from '~/components/GlobalLoading.vue';
+  import { NLayout } from 'naive-ui';
 
   // TODO: Добавить состояние загрузки пользователя
   const loading = false;
@@ -15,7 +16,7 @@
   </template>
 
   <template v-else>
-    <main class="layout">
+    <NLayout class="layout">
       <div class="layout__container">
         <BaseSidebar />
 
@@ -27,7 +28,7 @@
           </BaseContent>
         </div>
       </div>
-    </main>
+    </NLayout>
   </template>
 </template>
 
