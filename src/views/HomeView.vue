@@ -1,7 +1,3 @@
-<script setup lang="ts">
-  import { NPageHeader } from 'naive-ui';
-</script>
+<script setup lang="ts"></script>
 
-<template>
-  <NPageHeader title="Home" />
-</template>
+<template><div> ауйауйауй </div></template>

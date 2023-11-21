@@ -44,7 +44,6 @@
           :collapsed-width="64"
           :root-indent="18"
           :indent="26"
-          @update-value="console.log"
         />
       </NScrollbar>
     </div>
