@@ -3,6 +3,7 @@ import type { App } from 'vue';
 import { loadLayoutMiddleware } from './middleware/loadLayout';
 import { AppLayoutsEnum } from '~/enums/appLayoutsEnum';
 import { persistThemeParamsMiddleware } from './middleware/persistThemeParams';
+import { RouteNamesEnum } from '~/enums/routeNamesEnum';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,19 +11,21 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('../views/HomeView.vue'),
-      meta: {
-        layout: AppLayoutsEnum.DEFAULT,
-      },
+      name: RouteNamesEnum.HOME,
+      component: () => import('~/views/HomeView.vue'),
+      meta: { title: 'Home', layout: AppLayoutsEnum.DEFAULT },
     },
     {
       path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      name: RouteNamesEnum.ABOUT,
+      component: () => import('~/views/AboutView.vue'),
+      meta: { title: 'About' },
+    },
+    {
+      path: '/sign-in',
+      name: RouteNamesEnum.SIGN_IN,
+      component: () => import('~/views/SignInView.vue'),
+      meta: { layout: AppLayoutsEnum.AUTH },
     },
   ],
 });
