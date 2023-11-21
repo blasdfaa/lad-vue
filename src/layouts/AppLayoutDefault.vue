@@ -2,6 +2,7 @@
   import BaseHeader from './components/BaseHeader.vue';
   import BaseSidebar from './components/BaseSidebar.vue';
   import BaseContent from './components/BaseContent.vue';
+  import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
   import GlobalLoading from '~/components/GlobalLoading.vue';
 
   // TODO: Добавить состояние загрузки пользователя
@@ -20,6 +21,7 @@
 
         <div class="layout__wrapper">
           <BaseHeader />
+          <BaseBreadcrumbs />
           <BaseContent>
             <slot />
           </BaseContent>
