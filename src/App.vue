@@ -1,35 +1,30 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
-import { ref } from 'vue';
-import { useDisplay } from 'vuetify';
+  import { RouterView } from 'vue-router';
+  import { NConfigProvider, NGlobalStyle, darkTheme } from 'naive-ui';
+  import AppLayout from './layouts/AppLayout.vue';
+  import { useThemeStore } from './stores/theme';
 
-import ThemeSwitcher from './components/ThemeSwitcher.vue';
-import NavigationDrawer from './components/NavigationDrawer.vue';
-
-const drawer = ref(false);
-
-const { mobile } = useDisplay();
+  const theme = useThemeStore();
 </script>
 
 <template>
-  <VApp>
-    <VLayout class="rounded rounded-md">
-      <NavigationDrawer v-model:open="drawer" />
+  <NConfigProvider :theme="theme.isDarkTheme ? darkTheme : null">
+    <NGlobalStyle />
 
-      <VAppBar prominent>
-        <VAppBarNavIcon v-if="mobile" @click.stop="drawer = !drawer" />
-        <VToolbarTitle>App</VToolbarTitle>
-
-        <template v-slot:append>
-          <ThemeSwitcher />
+    <AppLayout>
+      <RouterView v-slot="{ Component }">
+        <template v-if="Component">
+          <Transition name="router" mode="out-in">
+            <component :is="Component" class="text-base" />
+          </Transition>
         </template>
-      </VAppBar>
-
-      <VMain class="d-flex align-center justify-center" style="min-height: 300px">
-        <RouterView />
-      </VMain>
-    </VLayout>
-  </VApp>
+      </RouterView>
+    </AppLayout>
+  </NConfigProvider>
 </template>
 
-<style scoped></style>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+</style>
