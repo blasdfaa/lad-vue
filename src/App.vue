@@ -21,13 +21,4 @@
   * {
     box-sizing: border-box;
   }
-
-  .router-enter-active,
-  .router-leave-active {
-    transition: opacity 0.1s ease;
-  }
-  .router-enter-from,
-  .router-leave-to {
-    opacity: 0;
-  }
 </style>

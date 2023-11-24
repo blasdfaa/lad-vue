@@ -1,3 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { defineAsyncComponent } from 'vue';
 
-<template><div> ауйауйауй </div></template>
+  const PostsList = defineAsyncComponent(() => import('~/components/PostsList.vue'));
+</script>
+
+<template>
+  <main>
+    <PostsList />
+  </main>
+</template>

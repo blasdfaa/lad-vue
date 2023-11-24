@@ -1,4 +1,4 @@
-import { createStorage, type StorageMeta, type StorageValue } from 'unstorage';
+import { createStorage, type StorageValue } from 'unstorage';
 import localStorageDriver from 'unstorage/drivers/localstorage';
 
 const storage = createStorage({
