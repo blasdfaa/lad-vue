@@ -1,4 +1,9 @@
-import router from '~/router';
+import { createStorage, type StorageValue } from 'unstorage';
+import localStorageDriver from 'unstorage/drivers/localstorage';
+
+const storage = createStorage({
+  driver: localStorageDriver({}),
+});
 
 export enum Theme {
   LIGHT = 'light',
@@ -8,21 +13,21 @@ export enum Theme {
 export class ThemeUtils {
   private static THEME_KEY = 'theme';
 
-  static getTheme() {
-    return new URL(location.href).searchParams.get('theme') as Theme;
+  static async getTheme(): Promise<StorageValue> {
+    return storage.getItem<Theme>(this.THEME_KEY);
   }
 
-  static setTheme(theme: string) {
-    router.push({ path: location.pathname, query: { theme } });
+  static async setTheme(theme: Theme) {
+    await storage.setItem<Theme>(this.THEME_KEY, theme);
   }
 
-  static clearTheme() {
-    router.push({ query: { theme: undefined } });
+  static async clearTheme() {
+    await storage.removeItem(this.THEME_KEY);
   }
 
-  static getDefaultTheme(): Theme {
+  static async getDefaultTheme(): Promise<Theme> {
     if (
-      this.getTheme() === Theme.DARK ||
+      (await this.getTheme()) === Theme.DARK ||
       (!this.getTheme() && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       return Theme.DARK;
@@ -30,9 +35,9 @@ export class ThemeUtils {
     return Theme.LIGHT;
   }
 
-  static changeTheme(theme: Theme) {
+  static async changeTheme(theme: Theme) {
     if (theme === Theme.DARK || theme === Theme.LIGHT) {
-      ThemeUtils.setTheme(theme);
+      await this.setTheme(theme);
     }
   }
 }

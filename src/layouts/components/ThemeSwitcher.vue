@@ -4,9 +4,9 @@
 
   const theme = useThemeStore();
 
-  function handleChangeTheme() {
+  const handleChangeTheme = () => {
     theme.toggleTheme();
-  }
+  };
 </script>
 
 <template>

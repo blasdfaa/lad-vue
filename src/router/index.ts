@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { App } from 'vue';
 import { loadLayoutMiddleware } from './middleware/loadLayout';
 import { AppLayoutsEnum } from '~/enums/appLayoutsEnum';
-import { persistThemeParamsMiddleware } from './middleware/persistThemeParams';
 import { RouteNamesEnum } from '~/enums/routeNamesEnum';
 
 const router = createRouter({
@@ -32,7 +31,6 @@ const router = createRouter({
 
 export function setupRouter(app: App) {
   router.beforeEach(loadLayoutMiddleware);
-  router.beforeEach(persistThemeParamsMiddleware);
 
   app.use(router);
 }

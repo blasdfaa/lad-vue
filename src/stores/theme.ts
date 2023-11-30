@@ -5,7 +5,7 @@ import { computed, ref, watch } from 'vue';
 import { Theme, ThemeUtils } from '~/lib/utils/theme';
 
 export const useThemeStore = defineStore('theme', () => {
-  const theme = ref(ThemeUtils.getDefaultTheme());
+  const theme = ref();
 
   const isLightTheme = computed(() => theme.value === Theme.LIGHT);
 
@@ -24,9 +24,15 @@ export const useThemeStore = defineStore('theme', () => {
     theme.value = isLightTheme.value ? Theme.DARK : Theme.LIGHT;
   };
 
-  const onThemeChange = (selectedTheme: Theme) => {
-    ThemeUtils.changeTheme(selectedTheme);
+  const onThemeChange = async (selectedTheme: Theme) => {
+    await ThemeUtils.changeTheme(selectedTheme);
   };
+
+  const initializeTheme = async () => {
+    theme.value = await ThemeUtils.getDefaultTheme();
+  };
+
+  initializeTheme();
 
   watch(
     () => theme.value,
