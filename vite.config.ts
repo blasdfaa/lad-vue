@@ -1,7 +1,10 @@
 import { fileURLToPath, URL } from 'node:url';
-
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { validateEnv } from './scripts/validateEnv';
+
+const env = loadEnv(process.env.NODE_ENV!, __dirname); // eq. import.meta.env in .cjs files
+validateEnv(env);
 
 // https://vitejs.dev/config/
 export default defineConfig({
