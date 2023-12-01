@@ -7,7 +7,6 @@
   import { searchQuotes } from '~/api/quotes';
   import { RouteNamesEnum } from '~/enums/routeNamesEnum';
 
-  const STALE_TIME = 1000 * 60; // 1min
   const SEARCH_INPUT_DELAY = 400; // ms
 
   const router = useRouter();
@@ -22,7 +21,6 @@
     queryFn: () => debouncedSearchFn(query.value),
     select: prepareOptions,
     retry: false,
-    staleTime: STALE_TIME,
     refetchOnWindowFocus: false,
   });
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { NButton, NIcon, NLayoutHeader, NTooltip } from 'naive-ui';
+  import { NButton, NIcon, NLayoutHeader } from 'naive-ui';
   import { useSidebarStore } from '~/stores/modules/sidebar';
   import { MenuOutline } from '@vicons/ionicons5';
   import { defineAsyncComponent } from 'vue';
@@ -13,15 +13,9 @@
 <template>
   <NLayoutHeader class="header" bordered>
     <div class="header__container">
-      <NTooltip placement="bottom" trigger="hover">
-        <template #trigger>
-          <NButton circle quaternary type="tertiary" @click="sidebarStore.toggleDisplay">
-            <NIcon size="22" :component="MenuOutline" />
-          </NButton>
-        </template>
-
-        {{ sidebarStore.isDisplay ? 'Скрыть меню' : 'Показать меню' }}
-      </NTooltip>
+      <NButton circle quaternary type="tertiary" @click="sidebarStore.toggleDisplay">
+        <NIcon size="22" :component="MenuOutline" />
+      </NButton>
 
       <SearchQuoteField />
 

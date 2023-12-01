@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { NPagination, NSpace, NSpin } from 'naive-ui';
-  import { defineAsyncComponent, ref } from 'vue';
+  import { computed, defineAsyncComponent, ref } from 'vue';
   import ScrollTarget from '~/components/ScrollTarget.vue';
   import { useQuotesListQuery } from '~/composables/useQuotesListQuery';
   import { useScrollIntoView } from '~/composables/useScrollIntoView';
@@ -13,12 +13,12 @@
     loadingComponent: NSpin,
   });
 
-  const QuotesFilters = defineAsyncComponent({
-    loader: () => import('~/components/QuotesFilters.vue'),
+  const QuotesSorting = defineAsyncComponent({
+    loader: () => import('~/components/QuotesSorting.vue'),
     loadingComponent: NSpin,
   });
 
-  const params = ref<QuotesListParams>({ page: DEFAULT_PAGE, sortBy: 'dateAdded', order: 'asc' });
+  const params = ref<QuotesListParams>({ page: DEFAULT_PAGE, sortBy: 'dateAdded', order: 'asc', tags: '' });
   const { data, isFetching } = useQuotesListQuery(params);
 
   const scrollTargetEl = ref<InstanceType<typeof ScrollTarget>>();
@@ -30,7 +30,7 @@
     <ScrollTarget ref="scrollTargetEl" />
 
     <NSpace size="large" vertical>
-      <QuotesFilters v-model:sort-by="params.sortBy" v-model:order="params.order" />
+      <QuotesSorting v-model:sort-by="params.sortBy" v-model:order="params.order" />
 
       <NSpin :show="isFetching">
         <QuotesList

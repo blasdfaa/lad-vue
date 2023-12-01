@@ -6,15 +6,23 @@
   import { ChevronBackCircleOutline } from '@vicons/ionicons5';
   import { useRoute } from 'vue-router';
   import { watchEffect } from 'vue';
+  import { useIsMobile } from '~/composables/breakpoints';
 
   const sidebarStore = useSidebarStore();
   const theme = useThemeVars();
   const route = useRoute();
+  const isMobile = useIsMobile();
 
   const selectedKey = ref(route.name as string);
 
   function handleChangeRouter() {
     selectedKey.value = route.name as string;
+  }
+
+  function onUpdateMenuValue() {
+    if (isMobile.value && sidebarStore.isDisplay) {
+      sidebarStore.toggleDisplay();
+    }
   }
 
   watchEffect(() => {
@@ -44,6 +52,7 @@
           :collapsed-width="64"
           :root-indent="18"
           :indent="26"
+          @update:value="onUpdateMenuValue"
         />
       </NScrollbar>
     </div>
