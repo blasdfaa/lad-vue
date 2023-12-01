@@ -11,7 +11,7 @@
   const quoteId = computed(() => route.params.id);
   const hasParam = computed(() => !!quoteId.value);
 
-  const { isLoading, isError, data } = useQuery({
+  const { isPending, isError, data } = useQuery({
     enabled: hasParam,
     queryKey: ['quotes', 'item', quoteId],
     queryFn: () => fetchQuouteDetails(route.params.id as string),
@@ -20,14 +20,14 @@
 
 <template>
   <main>
-    <template v-if="isLoading">
+    <template v-if="isPending">
       <NSkeleton text :repeat="2" />
       <NSkeleton text style="width: 60%" />
     </template>
 
-    <p v-if="isError">ERROR</p>
+    <p v-else-if="isError">ERROR</p>
 
-    <NDescriptions v-if="data" size="large" label-placement="left">
+    <NDescriptions v-else-if="data" size="large" label-placement="left">
       <template #header>
         <NSpace justify="space-between" :wrap="false">
           <span>{{ `- ${data.content}` }}</span>

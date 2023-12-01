@@ -12,6 +12,6 @@
 
 <style scoped>
   .scroll-target {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 150px;
   }
 </style>
