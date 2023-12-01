@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import { NButton, NIcon, NLayoutHeader } from 'naive-ui';
-  import { useSidebarStore } from '~/stores/modules/sidebar';
-  import { MenuOutline } from '@vicons/ionicons5';
-  import { defineAsyncComponent } from 'vue';
-  import SearchQuoteField from '~/components/SearchQuoteField.vue';
+import { NButton, NIcon, NLayoutHeader } from 'naive-ui'
+import { MenuOutline } from '@vicons/ionicons5'
+import { defineAsyncComponent } from 'vue'
+import { useSidebarStore } from '~/stores/modules/sidebar'
+import SearchQuoteField from '~/components/SearchQuoteField.vue'
 
-  const ThemeSwitcher = defineAsyncComponent(() => import('./ThemeSwitcher.vue'));
+const ThemeSwitcher = defineAsyncComponent(() => import('./ThemeSwitcher.vue'))
 
-  const sidebarStore = useSidebarStore();
+const sidebarStore = useSidebarStore()
 </script>
 
 <template>

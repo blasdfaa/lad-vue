@@ -1,33 +1,31 @@
 <script setup lang="ts">
-  import { NButton, NIcon, NMenu, NScrollbar, useThemeVars } from 'naive-ui';
-  import { useSidebarStore } from '~/stores/modules/sidebar';
-  import { menuOptions } from '../contants';
-  import { ref } from 'vue';
-  import { ChevronBackCircleOutline } from '@vicons/ionicons5';
-  import { useRoute } from 'vue-router';
-  import { watchEffect } from 'vue';
-  import { useIsMobile } from '~/composables/breakpoints';
+import { NButton, NIcon, NMenu, NScrollbar, useThemeVars } from 'naive-ui'
+import { ref, watchEffect } from 'vue'
+import { ChevronBackCircleOutline } from '@vicons/ionicons5'
+import { useRoute } from 'vue-router'
+import { menuOptions } from '../contants'
+import { useSidebarStore } from '~/stores/modules/sidebar'
+import { useIsMobile } from '~/composables/breakpoints'
 
-  const sidebarStore = useSidebarStore();
-  const theme = useThemeVars();
-  const route = useRoute();
-  const isMobile = useIsMobile();
+const sidebarStore = useSidebarStore()
+const theme = useThemeVars()
+const route = useRoute()
+const isMobile = useIsMobile()
 
-  const selectedKey = ref(route.name as string);
+const selectedKey = ref(route.name as string)
 
-  function handleChangeRouter() {
-    selectedKey.value = route.name as string;
-  }
+function handleChangeRouter() {
+  selectedKey.value = route.name as string
+}
 
-  function onUpdateMenuValue() {
-    if (isMobile.value && sidebarStore.isDisplay) {
-      sidebarStore.toggleDisplay();
-    }
-  }
+function onUpdateMenuValue() {
+  if (isMobile.value && sidebarStore.isDisplay)
+    sidebarStore.toggleDisplay()
+}
 
-  watchEffect(() => {
-    handleChangeRouter();
-  });
+watchEffect(() => {
+  handleChangeRouter()
+})
 </script>
 
 <template>

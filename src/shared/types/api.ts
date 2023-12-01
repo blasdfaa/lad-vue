@@ -1,16 +1,16 @@
-export type Pagination<T> = {
+export interface Pagination<T> {
   /** The number of results included in this response. */
-  count: number;
+  count: number
   /** The total number of results matching this request. */
-  totalCount: number;
+  totalCount: number
   /** The current page number */
-  page: number;
+  page: number
   /** The total number of pages matching this request */
-  totalPages: number;
+  totalPages: number
   /**
    * The 1-based index of the last result included in this response.
    * This shows the current pagination offset.
    */
-  lastItemIndex: number | null;
-  results: T[];
-};
+  lastItemIndex: number | null
+  results: T[]
+}

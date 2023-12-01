@@ -1,26 +1,26 @@
 <script setup lang="ts">
-  import { NListItem, NList, NThing } from 'naive-ui';
-  import { useRouter } from 'vue-router';
-  import { RouteNamesEnum } from '~/enums/routeNamesEnum';
-  import TagsList from './TagsList.vue';
-  import LikeButton from './LikeButton.vue';
+import { NList, NListItem, NThing } from 'naive-ui'
+import { useRouter } from 'vue-router'
+import TagsList from './TagsList.vue'
+import LikeButton from './LikeButton.vue'
+import { RouteNamesEnum } from '~/enums/routeNamesEnum'
 
-  interface QuoteItem {
-    id: string;
-    tags: string[];
-    content: string;
-    author: string;
-  }
+interface QuoteItem {
+  id: string
+  tags: string[]
+  content: string
+  author: string
+}
 
-  defineProps<{
-    items: QuoteItem[];
-  }>();
+defineProps<{
+  items: QuoteItem[]
+}>()
 
-  const router = useRouter();
+const router = useRouter()
 
-  function navigateToDetails(id: string) {
-    router.push({ name: RouteNamesEnum.QUOTES_DETAILS, params: { id } });
-  }
+function navigateToDetails(id: string) {
+  router.push({ name: RouteNamesEnum.QUOTES_DETAILS, params: { id } })
+}
 </script>
 
 <template>

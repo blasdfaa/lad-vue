@@ -1,8 +1,8 @@
 export interface QuotesListParams {
   /** The maximum Length in characters (can be combined with `minLength`) */
-  maxLength?: number;
+  maxLength?: number
   /** The minimum Length in characters (can be combined with `maxLength`) */
-  minLength?: number;
+  minLength?: number
   /**
    * Filter quotes by tag(s).
    * @description
@@ -16,7 +16,7 @@ export interface QuotesListParams {
    * "/quotes?tags=technology,famous-quotes"
    * ```
    */
-  tags?: string;
+  tags?: string
   /**
    * Get quotes by a specific author.
    * @description
@@ -26,12 +26,12 @@ export interface QuotesListParams {
    * "/quotes?author=albert-einstein"
    * ```
    */
-  author?: string;
+  author?: string
   /**
    * The field used to sort quotes
    * @default "dateAdded"
    */
-  sortBy?: 'dateAdded' | 'dateModified' | 'author' | 'content';
+  sortBy?: 'dateAdded' | 'dateModified' | 'author' | 'content'
   /**
    * The order in which results are sorted.
    * @description
@@ -41,14 +41,14 @@ export interface QuotesListParams {
    *
    * Default: depends on `sortBy` param
    */
-  order?: 'asc' | 'desc';
+  order?: 'asc' | 'desc'
   /**
    * Sets the number of results per page.
    * Min: `1`
    * Max: `150`
    * @default 20
    */
-  limit?: number;
+  limit?: number
   /**
    * The page of results to return.
    * Min: `1`
@@ -56,43 +56,43 @@ export interface QuotesListParams {
    * If the value is greater than the total number of pages, request will not return any results
    * @default 1
    */
-  page?: number;
+  page?: number
 }
 
 export interface QuotesListResponse {
-  _id: string;
+  _id: string
   /** The quotation text */
-  content: string;
+  content: string
   // The full name of the author
-  author: string;
+  author: string
   // The `slug` of the quote author
-  authorSlug: string;
+  authorSlug: string
   // The length of quote (number of characters)
-  length: number;
+  length: number
   // An array of tag names for this quote
-  tags: string[];
+  tags: string[]
 }
 
 export interface QuoteDetailsResponse {
-  _id: string;
+  _id: string
   // The quotation text
-  content: string;
+  content: string
   // The full name of the author
-  author: string;
+  author: string
   // The length of quote (number of characters)
-  length: number;
+  length: number
   // An array of tag names for this quote
-  tags: string[];
+  tags: string[]
 }
 
 export interface QuotesSearchResponse {
-  author: string;
-  authorId: string;
-  authorSlug: string;
-  content: string;
-  dateAdded: string;
-  dateModified: string;
-  length: number;
-  tags: string[];
-  _id: string;
+  author: string
+  authorId: string
+  authorSlug: string
+  content: string
+  dateAdded: string
+  dateModified: string
+  length: number
+  tags: string[]
+  _id: string
 }

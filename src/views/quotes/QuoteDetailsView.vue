@@ -1,21 +1,21 @@
 <script setup lang="ts">
-  import { useQuery } from '@tanstack/vue-query';
-  import { NDescriptions, NDescriptionsItem, NSkeleton, NSpace } from 'naive-ui';
-  import { computed } from 'vue';
-  import { useRoute } from 'vue-router';
-  import { fetchQuouteDetails } from '~/api/quotes';
-  import LikeButton from '~/components/LikeButton.vue';
-  import TagsList from '~/components/TagsList.vue';
+import { useQuery } from '@tanstack/vue-query'
+import { NDescriptions, NDescriptionsItem, NSkeleton, NSpace } from 'naive-ui'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { fetchQuouteDetails } from '~/api/quotes'
+import LikeButton from '~/components/LikeButton.vue'
+import TagsList from '~/components/TagsList.vue'
 
-  const route = useRoute();
-  const quoteId = computed(() => route.params.id);
-  const hasParam = computed(() => !!quoteId.value);
+const route = useRoute()
+const quoteId = computed(() => route.params.id)
+const hasParam = computed(() => !!quoteId.value)
 
-  const { isPending, isError, data } = useQuery({
-    enabled: hasParam,
-    queryKey: ['quotes', 'item', quoteId],
-    queryFn: () => fetchQuouteDetails(route.params.id as string),
-  });
+const { isPending, isError, data } = useQuery({
+  enabled: hasParam,
+  queryKey: ['quotes', 'item', quoteId],
+  queryFn: () => fetchQuouteDetails(route.params.id as string),
+})
 </script>
 
 <template>
@@ -25,7 +25,9 @@
       <NSkeleton text style="width: 60%" />
     </template>
 
-    <p v-else-if="isError">ERROR</p>
+    <p v-else-if="isError">
+      ERROR
+    </p>
 
     <NDescriptions v-else-if="data" size="large" label-placement="left">
       <template #header>
@@ -35,11 +37,17 @@
         </NSpace>
       </template>
 
-      <NDescriptionsItem label="Author"> {{ data.author }} </NDescriptionsItem>
+      <NDescriptionsItem label="Author">
+        {{ data.author }}
+      </NDescriptionsItem>
 
-      <NDescriptionsItem label="Tags"> <TagsList :items="data.tags" /> </NDescriptionsItem>
+      <NDescriptionsItem label="Tags">
+        <TagsList :items="data.tags" />
+      </NDescriptionsItem>
 
-      <NDescriptionsItem label="Length">{{ data.length }} </NDescriptionsItem>
+      <NDescriptionsItem label="Length">
+        {{ data.length }}
+      </NDescriptionsItem>
     </NDescriptions>
   </main>
 </template>

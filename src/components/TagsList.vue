@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { NSpace, NTag } from 'naive-ui';
+import { NSpace, NTag } from 'naive-ui'
 
-  defineProps<{ items: string[] }>();
+defineProps<{ items: string[] }>()
 </script>
 
 <template>

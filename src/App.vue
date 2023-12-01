@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { NConfigProvider, NGlobalStyle, darkTheme } from 'naive-ui';
-  import AppLayout from './layouts/AppLayout.vue';
-  import { useThemeStore } from './stores/modules/theme';
-  import RouterViewWithTransition from './components/RouterViewWithTransition.vue';
+import { NConfigProvider, NGlobalStyle, darkTheme } from 'naive-ui'
+import AppLayout from './layouts/AppLayout.vue'
+import { useThemeStore } from './stores/modules/theme'
+import RouterViewWithTransition from './components/RouterViewWithTransition.vue'
 
-  const theme = useThemeStore();
+const theme = useThemeStore()
 </script>
 
 <template>

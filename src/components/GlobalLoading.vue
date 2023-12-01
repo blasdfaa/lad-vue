@@ -1,12 +1,14 @@
 <script setup lang="ts">
-  import { NGradientText, NSpin } from 'naive-ui';
+import { NGradientText, NSpin } from 'naive-ui'
 </script>
 
 <template>
   <main class="loader">
     <NSpin size="large" />
     <span class="mb-1 mt-4 text-xl loader__app-name">QUOTES APP</span>
-    <NGradientText type="primary">Powered by LAD</NGradientText>
+    <NGradientText type="primary">
+      Powered by LAD
+    </NGradientText>
   </main>
 </template>
 

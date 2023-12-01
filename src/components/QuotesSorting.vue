@@ -1,41 +1,41 @@
 <script setup lang="ts">
-  import { NSelect, NSpace, type SelectOption } from 'naive-ui';
-  import type { QuotesListParams } from '~/shared/types/quotes';
+import { NSelect, NSpace, type SelectOption } from 'naive-ui'
+import type { QuotesListParams } from '~/shared/types/quotes'
 
-  interface Filters {
-    sortBy: QuotesListParams['sortBy'];
-    order: QuotesListParams['order'];
-  }
+interface Filters {
+  sortBy: QuotesListParams['sortBy']
+  order: QuotesListParams['order']
+}
 
-  defineProps<{
-    sortBy: Filters['sortBy'];
-    order: Filters['order'];
-  }>();
+defineProps<{
+  sortBy: Filters['sortBy']
+  order: Filters['order']
+}>()
 
-  const emit = defineEmits<{
-    'update:sortBy': [value: string];
-    'update:order': [value: string];
-  }>();
+const emit = defineEmits<{
+  'update:sortBy': [value: string]
+  'update:order': [value: string]
+}>()
 
-  const SORT_BY_OPTIONS: SelectOption[] = [
-    { label: 'Date Added', value: 'dateAdded' },
-    { label: 'Date Modified', value: 'dateModified' },
-    { label: 'Author', value: 'author' },
-    { label: 'Content', value: 'content' },
-  ];
+const SORT_BY_OPTIONS: SelectOption[] = [
+  { label: 'Date Added', value: 'dateAdded' },
+  { label: 'Date Modified', value: 'dateModified' },
+  { label: 'Author', value: 'author' },
+  { label: 'Content', value: 'content' },
+]
 
-  const ORDER_OPTIONS: SelectOption[] = [
-    { label: 'Ascending', value: 'asc' },
-    { label: 'Descending', value: 'desc' },
-  ];
+const ORDER_OPTIONS: SelectOption[] = [
+  { label: 'Ascending', value: 'asc' },
+  { label: 'Descending', value: 'desc' },
+]
 
-  function onSortByUpdate(value: string) {
-    emit('update:sortBy', value);
-  }
+function onSortByUpdate(value: string) {
+  emit('update:sortBy', value)
+}
 
-  function onOrderUpdate(value: string) {
-    emit('update:order', value);
-  }
+function onOrderUpdate(value: string) {
+  emit('update:order', value)
+}
 </script>
 
 <template>

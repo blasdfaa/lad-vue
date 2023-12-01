@@ -1,7 +1,7 @@
-import type { MenuOption } from 'naive-ui';
-import { RenderUtils } from '~/lib/utils/render';
-import { BookOutline, PricetagOutline } from '@vicons/ionicons5';
-import { RouteNamesEnum } from '~/enums/routeNamesEnum';
+import type { MenuOption } from 'naive-ui'
+import { BookOutline, PricetagOutline } from '@vicons/ionicons5'
+import { RenderUtils } from '~/lib/utils/render'
+import { RouteNamesEnum } from '~/enums/routeNamesEnum'
 
 export const menuOptions: MenuOption[] = [
   {
@@ -14,4 +14,4 @@ export const menuOptions: MenuOption[] = [
     key: 'tags',
     icon: RenderUtils.renderIcon(PricetagOutline),
   },
-];
+]

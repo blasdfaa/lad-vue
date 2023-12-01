@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { NLayout, NLayoutFooter, NSpace } from 'naive-ui';
-  import { defineAsyncComponent } from 'vue';
+import { NLayout, NLayoutFooter, NSpace } from 'naive-ui'
+import { defineAsyncComponent } from 'vue'
 
-  const ThemeSwitcher = defineAsyncComponent(() => import('./components/ThemeSwitcher.vue'));
+const ThemeSwitcher = defineAsyncComponent(() => import('./components/ThemeSwitcher.vue'))
 </script>
 
 <template>

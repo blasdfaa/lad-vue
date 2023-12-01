@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { NPageHeader } from 'naive-ui';
-  import { useRoute } from 'vue-router';
+import { NPageHeader } from 'naive-ui'
+import { useRoute } from 'vue-router'
 
-  const route = useRoute();
+const route = useRoute()
 </script>
 
 <template>

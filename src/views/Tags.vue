@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { useQuery } from '@tanstack/vue-query';
-  import { NSpace, NSpin, NTag, NText } from 'naive-ui';
-  import { fetchTagsList } from '~/api/tags';
+import { useQuery } from '@tanstack/vue-query'
+import { NSpace, NSpin, NTag, NText } from 'naive-ui'
+import { fetchTagsList } from '~/api/tags'
 
-  const { data, isPending } = useQuery({
-    queryKey: ['tags'],
-    queryFn: () => fetchTagsList(),
-  });
+const { data, isPending } = useQuery({
+  queryKey: ['tags'],
+  queryFn: () => fetchTagsList(),
+})
 </script>
 
 <template>

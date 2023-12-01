@@ -1,14 +1,14 @@
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 
-import App from './App.vue';
-import { setupRouter } from './router';
-import { setupStore } from './stores';
-import { setupVueQuery } from './plugins/vueQuery';
+import App from './App.vue'
+import { setupRouter } from './router'
+import { setupStore } from './stores'
+import { setupVueQuery } from './plugins/vueQuery'
 
-const app = createApp(App);
+const app = createApp(App)
 
-setupStore(app);
-setupRouter(app);
-setupVueQuery(app);
+setupStore(app)
+setupRouter(app)
+setupVueQuery(app)
 
-app.mount('#app');
+app.mount('#app')

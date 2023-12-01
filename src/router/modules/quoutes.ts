@@ -1,5 +1,5 @@
-import type { RouteRecordRaw } from 'vue-router';
-import { RouteNamesEnum } from '~/enums/routeNamesEnum';
+import type { RouteRecordRaw } from 'vue-router'
+import { RouteNamesEnum } from '~/enums/routeNamesEnum'
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -16,6 +16,6 @@ export const routes: RouteRecordRaw[] = [
       breadcrumb: ({ params }) => [{ label: 'Quoutes', to: '/quotes' }, { label: params.id as string }],
     },
   },
-];
+]
 
-export default routes;
+export default routes

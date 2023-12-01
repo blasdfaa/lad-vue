@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import { HeartOutline, HeartSharp } from '@vicons/ionicons5';
-  import { NButton, NIcon } from 'naive-ui';
-  import { useLocalLikeStore } from '~/stores/modules/localLike';
+import { HeartOutline, HeartSharp } from '@vicons/ionicons5'
+import { NButton, NIcon } from 'naive-ui'
+import { useLocalLikeStore } from '~/stores/modules/localLike'
 
-  const props = defineProps<{ id: string }>();
+const props = defineProps<{ id: string }>()
 
-  const likeStore = useLocalLikeStore();
+const likeStore = useLocalLikeStore()
 
-  function onToggle() {
-    likeStore.toggleLike(props.id);
-  }
+function onToggle() {
+  likeStore.toggleLike(props.id)
+}
 </script>
 
 <template>

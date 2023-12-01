@@ -1,13 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "reset.d.ts", "vueQuery.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "declarationMap": false,
     "composite": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    }
-  }
+    },
+    "declarationMap": false
+  },
+  "include": ["env.d.ts", "reset.d.ts", "vueQuery.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/__tests__/*"]
 }

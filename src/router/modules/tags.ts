@@ -1,5 +1,5 @@
-import type { RouteRecordRaw } from 'vue-router';
-import { RouteNamesEnum } from '~/enums/routeNamesEnum';
+import type { RouteRecordRaw } from 'vue-router'
+import { RouteNamesEnum } from '~/enums/routeNamesEnum'
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -8,6 +8,6 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('~/views/Tags.vue'),
     meta: { title: 'Tags' },
   },
-];
+]
 
-export default routes;
+export default routes

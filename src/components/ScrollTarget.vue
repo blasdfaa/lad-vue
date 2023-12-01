@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+import { ref } from 'vue'
 
-  const el = ref<HTMLDivElement | null>(null);
+const el = ref<HTMLDivElement | null>(null)
 
-  defineExpose({ el });
+defineExpose({ el })
 </script>
 
 <template>
