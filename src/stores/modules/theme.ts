@@ -16,21 +16,21 @@ export const useThemeStore = defineStore('theme', () => {
    */
   const naiveTheme = computed(() => (isLightTheme.value ? lightTheme : darkTheme));
 
-  const setTheme = (selectedTheme: Theme) => {
+  function setTheme(selectedTheme: Theme) {
     theme.value = selectedTheme;
-  };
+  }
 
-  const toggleTheme = () => {
+  function toggleTheme() {
     theme.value = isLightTheme.value ? Theme.DARK : Theme.LIGHT;
-  };
+  }
 
-  const onThemeChange = async (selectedTheme: Theme) => {
+  async function onThemeChange(selectedTheme: Theme) {
     await ThemeUtils.changeTheme(selectedTheme);
-  };
+  }
 
-  const initializeTheme = async () => {
+  async function initializeTheme() {
     theme.value = await ThemeUtils.getDefaultTheme();
-  };
+  }
 
   initializeTheme();
 

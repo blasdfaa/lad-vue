@@ -1,10 +1,9 @@
 <script setup lang="ts">
-  import { NButton, NIcon, NLayoutHeader, NSpace, NTooltip } from 'naive-ui';
-  import { useSidebarStore } from '~/stores/sidebar';
-  import { MenuOutline, PersonOutline } from '@vicons/ionicons5';
+  import { NButton, NIcon, NLayoutHeader, NTooltip } from 'naive-ui';
+  import { useSidebarStore } from '~/stores/modules/sidebar';
+  import { MenuOutline } from '@vicons/ionicons5';
   import { defineAsyncComponent } from 'vue';
-  import { RouterLink } from 'vue-router';
-  import { RouteNamesEnum } from '~/enums/routeNamesEnum';
+  import SearchQuoteField from '~/components/SearchQuoteField.vue';
 
   const ThemeSwitcher = defineAsyncComponent(() => import('./ThemeSwitcher.vue'));
 
@@ -24,17 +23,9 @@
         {{ sidebarStore.isDisplay ? 'Скрыть меню' : 'Показать меню' }}
       </NTooltip>
 
-      <NSpace>
-        <ThemeSwitcher />
-        <RouterLink v-slot="{ navigate }" :to="{ name: RouteNamesEnum.SIGN_IN }" custom>
-          <NButton quaternary @click="navigate">
-            <template #icon>
-              <NIcon :component="PersonOutline" />
-            </template>
-            Auth
-          </NButton>
-        </RouterLink>
-      </NSpace>
+      <SearchQuoteField />
+
+      <ThemeSwitcher />
     </div>
   </NLayoutHeader>
 </template>
@@ -62,7 +53,7 @@
   .header__container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
     height: 100%;

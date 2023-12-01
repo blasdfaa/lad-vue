@@ -1,5 +1,7 @@
 export enum RouteNamesEnum {
-  HOME = 'home',
-  ABOUT = 'about',
-  SIGN_IN = 'sign-in',
+  QUOTES = 'quotes',
+  QUOTES_DETAILS = 'quotes.details',
+  AUTHORS = 'authors',
+  AUTHORS_DETAILS = 'authors.details',
+  TAGS = 'tags',
 }

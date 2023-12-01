@@ -5,9 +5,16 @@
   import BaseBreadcrumbs from './components/BaseBreadcrumbs.vue';
   import GlobalLoading from '~/components/GlobalLoading.vue';
   import { NLayout } from 'naive-ui';
+  import { onMounted, ref } from 'vue';
 
-  // TODO: Добавить состояние загрузки пользователя
-  const loading = false;
+  const LOADING_DELAY = 1500; // 2sec
+
+  const loading = ref(true);
+
+  onMounted(async () => {
+    await new Promise((resolve) => setTimeout(resolve, LOADING_DELAY));
+    loading.value = false;
+  });
 </script>
 
 <template>

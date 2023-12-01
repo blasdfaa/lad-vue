@@ -1,32 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
 import { loadLayoutMiddleware } from './middleware/loadLayout';
-import { AppLayoutsEnum } from '~/enums/appLayoutsEnum';
+import type { ModuleType } from './types';
 import { RouteNamesEnum } from '~/enums/routeNamesEnum';
+
+// Все "модули" роутера импортируются автоматически
+const modules = import.meta.glob<ModuleType>('./modules/**/*.ts', { eager: true });
+
+const routeModuleList: RouteRecordRaw[] = Object.keys(modules).reduce<RouteRecordRaw[]>((list, key) => {
+  const mod = modules[key].default ?? {};
+  const modList = Array.isArray(mod) ? [...mod] : [mod];
+  return [...list, ...modList];
+}, []);
+
+const indexRoute: RouteRecordRaw = {
+  path: '/',
+  redirect: RouteNamesEnum.QUOTES,
+};
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   strict: true,
-  routes: [
-    {
-      path: '/',
-      name: RouteNamesEnum.HOME,
-      component: () => import('~/views/HomeView.vue'),
-      meta: { title: 'Home', layout: AppLayoutsEnum.DEFAULT },
-    },
-    {
-      path: '/about',
-      name: RouteNamesEnum.ABOUT,
-      component: () => import('~/views/AboutView.vue'),
-      meta: { title: 'About' },
-    },
-    {
-      path: '/sign-in',
-      name: RouteNamesEnum.SIGN_IN,
-      component: () => import('~/views/SignInView.vue'),
-      meta: { layout: AppLayoutsEnum.AUTH },
-    },
-  ],
+  routes: [indexRoute, ...routeModuleList],
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
 export function setupRouter(app: App) {

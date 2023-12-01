@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { NButton, NIcon, NMenu, NScrollbar, useThemeVars } from 'naive-ui';
-  import { useSidebarStore } from '~/stores/sidebar';
+  import { useSidebarStore } from '~/stores/modules/sidebar';
   import { menuOptions } from '../contants';
   import { ref } from 'vue';
   import { ChevronBackCircleOutline } from '@vicons/ionicons5';

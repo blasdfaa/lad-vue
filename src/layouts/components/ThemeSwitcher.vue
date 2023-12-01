@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { NButton } from 'naive-ui';
-  import { useThemeStore } from '~/stores/theme';
+  import { useThemeStore } from '~/stores/modules/theme';
 
   const theme = useThemeStore();
 
-  const handleChangeTheme = () => {
+  function handleChangeTheme() {
     theme.toggleTheme();
-  };
+  }
 </script>
 
 <template>
